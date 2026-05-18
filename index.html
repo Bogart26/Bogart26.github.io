@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juan · Copywriter para Coaches y Cursos Online</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --ink-muted: #6b6b6b;
+    --ink-faint: #b0b0b0;
+    --paper: #faf9f7;
+    --paper-warm: #f3f1ec;
+    --accent: #2d5a3d;
+    --accent-light: #e8f0eb;
+    --border: rgba(0,0,0,0.08);
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    border-bottom: 1px solid var(--border);
+    background: var(--paper);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 20px;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .nav-links { display: flex; gap: 32px; align-items: center; }
+  .nav-links a {
+    font-size: 14px;
+    color: var(--ink-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .btn-nav {
+    font-size: 13px;
+    font-weight: 500;
+    padding: 9px 20px;
+    border-radius: 6px;
+    background: var(--ink);
+    color: var(--paper);
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .btn-nav:hover { opacity: 0.85; }
+
+  /* HERO */
+  .hero {
+    padding: 100px 40px 90px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--accent);
+    background: var(--accent-light);
+    padding: 5px 14px;
+    border-radius: 999px;
+    margin-bottom: 28px;
+    letter-spacing: 0.03em;
+  }
+  .hero-tag::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(36px, 5vw, 58px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 24px;
+    max-width: 700px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-sub {
+    font-size: 17px;
+    color: var(--ink-muted);
+    line-height: 1.75;
+    max-width: 520px;
+    margin-bottom: 40px;
+    font-weight: 300;
+  }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .btn-primary {
+    font-size: 15px;
+    font-weight: 500;
+    padding: 13px 28px;
+    border-radius: 6px;
+    background: var(--ink);
+    color: var(--paper);
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: opacity 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.85; }
+  .btn-ghost {
+    font-size: 15px;
+    padding: 13px 28px;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s;
+  }
+  .btn-ghost:hover { background: var(--paper-warm); }
+  .hero-note {
+    font-size: 12px;
+    color: var(--ink-faint);
+    margin-top: 14px;
+  }
+
+  /* TRUST BAR */
+  .trust-bar {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 18px 40px;
+    background: var(--paper-warm);
+  }
+  .trust-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    gap: 36px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .trust-item {
+    font-size: 13px;
+    color: var(--ink-muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .trust-check {
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .trust-check::after {
+    content: '';
+    width: 5px; height: 3px;
+    border-left: 1.5px solid white;
+    border-bottom: 1.5px solid white;
+    transform: rotate(-45deg) translateY(-1px);
+  }
+
+  /* SECTION BASE */
+  section { padding: 80px 40px; }
+  .section-inner { max-width: 900px; margin: 0 auto; }
+  .section-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 14px;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(26px, 3.5vw, 38px);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+  .section-sub {
+    font-size: 16px;
+    color: var(--ink-muted);
+    max-width: 540px;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* PAIN */
+  .pain { background: var(--paper); border-top: 1px solid var(--border); }
+  .pain-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 48px;
+  }
+  .pain-item {
+    background: var(--paper);
+    padding: 28px 28px;
+  }
+  .pain-num {
+    font-family: var(--serif);
+    font-size: 36px;
+    color: var(--paper-warm);
+    line-height: 1;
+    margin-bottom: 12px;
+    -webkit-text-stroke: 1px var(--ink-faint);
+  }
+  .pain-title {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .pain-body { font-size: 14px; color: var(--ink-muted); line-height: 1.6; }
+
+  /* SERVICES */
+  .services { background: var(--paper-warm); border-top: 1px solid var(--border); }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-top: 48px;
+  }
+  .svc-card {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px;
+    transition: border-color 0.2s;
+  }
+  .svc-card:hover { border-color: rgba(0,0,0,0.18); }
+  .svc-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 10px;
+  }
+  .svc-title {
+    font-family: var(--serif);
+    font-size: 20px;
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+  .svc-body { font-size: 13px; color: var(--ink-muted); line-height: 1.6; margin-bottom: 16px; }
+  .svc-price {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--accent);
+    border-top: 1px solid var(--border);
+    padding-top: 12px;
+    margin-top: auto;
+  }
+  .svc-card.featured {
+    background: var(--ink);
+    border-color: var(--ink);
+  }
+  .svc-card.featured .svc-label,
+  .svc-card.featured .svc-body { color: rgba(255,255,255,0.5); }
+  .svc-card.featured .svc-title { color: var(--paper); }
+  .svc-card.featured .svc-price { color: #6fcf8a; border-color: rgba(255,255,255,0.12); }
+  .popular-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 10px;
+    letter-spacing: 0.05em;
+  }
+
+  /* PROCESS */
+  .process { background: var(--paper); border-top: 1px solid var(--border); }
+  .process-steps { margin-top: 48px; display: flex; flex-direction: column; }
+  .process-step {
+    display: flex;
+    gap: 28px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+  }
+  .process-step:last-child { border-bottom: none; }
+  .step-num-big {
+    font-family: var(--serif);
+    font-size: 48px;
+    line-height: 1;
+    color: var(--paper-warm);
+    -webkit-text-stroke: 1px var(--border);
+    min-width: 48px;
+    margin-top: -6px;
+  }
+  .step-content {}
+  .step-title { font-size: 17px; font-weight: 500; margin-bottom: 6px; }
+  .step-body { font-size: 14px; color: var(--ink-muted); line-height: 1.65; max-width: 520px; }
+
+  /* TESTIMONIALS */
+  .testimonials { background: var(--paper-warm); border-top: 1px solid var(--border); }
+  .testi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    margin-top: 48px;
+  }
+  .testi-card {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px;
+  }
+  .testi-stars {
+    display: flex;
+    gap: 3px;
+    margin-bottom: 14px;
+  }
+  .star {
+    width: 12px; height: 12px;
+    background: #f5a623;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  }
+  .testi-quote {
+    font-family: var(--serif);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink);
+    margin-bottom: 18px;
+    font-style: italic;
+  }
+  .testi-author { display: flex; align-items: center; gap: 12px; }
+  .testi-avatar {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--accent-light);
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 500;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .testi-name { font-size: 13px; font-weight: 500; }
+  .testi-role { font-size: 12px; color: var(--ink-faint); }
+  .testi-disclaimer {
+    font-size: 11px;
+    color: var(--ink-faint);
+    margin-top: 20px;
+    font-style: italic;
+  }
+
+  /* FAQ */
+  .faq { background: var(--paper); border-top: 1px solid var(--border); }
+  .faq-list { margin-top: 40px; display: flex; flex-direction: column; }
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-q {
+    width: 100%;
+    text-align: left;
+    padding: 20px 0;
+    font-size: 15px;
+    font-weight: 500;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--ink);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  .faq-icon { font-size: 20px; color: var(--ink-faint); flex-shrink: 0; transition: transform 0.2s; }
+  .faq-a {
+    font-size: 14px;
+    color: var(--ink-muted);
+    line-height: 1.7;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s;
+  }
+  .faq-item.open .faq-a { max-height: 300px; padding-bottom: 18px; }
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+  /* CTA FINAL */
+  .cta-final {
+    background: var(--ink);
+    border-top: 1px solid var(--border);
+    padding: 100px 40px;
+    text-align: center;
+  }
+  .cta-final .section-eyebrow { color: rgba(255,255,255,0.3); }
+  .cta-final .section-title { color: var(--paper); }
+  .cta-final .section-sub { color: rgba(255,255,255,0.55); margin: 0 auto 40px; }
+  .cta-form {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 460px;
+    margin: 0 auto;
+  }
+  .cta-input {
+    flex: 1;
+    min-width: 200px;
+    padding: 13px 18px;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.07);
+    color: white;
+    font-size: 14px;
+    font-family: var(--sans);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .cta-input::placeholder { color: rgba(255,255,255,0.3); }
+  .cta-input:focus { border-color: rgba(255,255,255,0.35); }
+  .btn-light {
+    font-size: 14px;
+    font-weight: 500;
+    padding: 13px 24px;
+    border-radius: 6px;
+    background: var(--paper);
+    color: var(--ink);
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .btn-light:hover { opacity: 0.9; }
+  .cta-guarantee {
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+    margin-top: 16px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding: 28px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footer-logo {
+    font-family: var(--serif);
+    font-size: 16px;
+    color: rgba(255,255,255,0.5);
+  }
+  .footer-note { font-size: 12px; color: rgba(255,255,255,0.25); }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    nav { padding: 16px 20px; }
+    nav .nav-links a:not(:last-child) { display: none; }
+    .hero, section { padding: 60px 20px; }
+    .trust-bar { padding: 16px 20px; }
+    footer { padding: 24px 20px; }
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-tag, .hero h1, .hero-sub, .hero-actions {
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero-tag { animation-delay: 0.05s; }
+  .hero h1  { animation-delay: 0.15s; }
+  .hero-sub { animation-delay: 0.25s; }
+  .hero-actions { animation-delay: 0.35s; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">Juan Reale · Copywriter</span>
+  <div class="nav-links">
+    <a href="#servicios">Servicios</a>
+    <a href="#proceso">Proceso</a>
+    <a href="#faq">FAQ</a>
+    <a href="#https://tally.so/r/Zj19la" class="btn-nav">Trabajemos juntos</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-tag">Especialista en Coaches &amp; Cursos Online · ES / EN</div>
+  <h1>Tu mensaje es poderoso.<br><em>El copy que lo vende,</em><br>también debería serlo.</h1>
+  <p class="hero-sub">
+    Escribo páginas de venta, emails y contenido que convierte para coaches y creadores de cursos — en español e inglés. Copy basado en psicología de ventas, con IA como herramienta y criterio humano en cada línea.
+  </p>
+  <div class="hero-actions">
+    <a href="#servicios" class="btn-primary">Ver servicios y precios</a>
+    <a href="#contacto" class="btn-ghost">Pedir auditoría gratis</a>
+  </div>
+  <p class="hero-note">Primera consulta gratuita · Sin compromiso · Entrega en 48–72 hs</p>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-inner">
+    <span class="trust-item"><span class="trust-check"></span>Entrega garantizada en 48–72 hs</span>
+    <span class="trust-item"><span class="trust-check"></span>2 rondas de revisiones incluidas</span>
+    <span class="trust-item"><span class="trust-check"></span>Bilingüe español e inglés</span>
+    <span class="trust-item"><span class="trust-check"></span>Copy listo para publicar</span>
+    <span class="trust-item"><span class="trust-check"></span>Especializado en infoproductos</span>
+  </div>
+</div>
+
+<!-- PAIN -->
+<section class="pain">
+  <div class="section-inner">
+    <p class="section-eyebrow">El problema</p>
+    <h2 class="section-title">Tenés el mejor curso del mercado.<br>Tu copy no lo refleja.</h2>
+    <p class="section-sub">La mayoría de coaches y creadores pierden ventas no por su producto — sino por cómo lo comunican.</p>
+    <div class="pain-grid">
+      <div class="pain-item">
+        <div class="pain-num">01</div>
+        <p class="pain-title">Página que no convierte</p>
+        <p class="pain-body">Tráfico que llega y se va sin comprar. El problema casi siempre es el mensaje, no el producto ni el precio.</p>
+      </div>
+      <div class="pain-item">
+        <div class="pain-num">02</div>
+        <p class="pain-title">Emails que nadie abre</p>
+        <p class="pain-body">Tu lista existe pero no responde. Falta una secuencia que genere confianza real antes de intentar vender.</p>
+      </div>
+      <div class="pain-item">
+        <div class="pain-num">03</div>
+        <p class="pain-title">Copy genérico de IA</p>
+        <p class="pain-body">Usaste ChatGPT y el resultado suena igual que el de todos. Tu marca necesita una voz que la distinga.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="servicios">
+  <div class="section-inner">
+    <p class="section-eyebrow">Servicios</p>
+    <h2 class="section-title">Lo que escribo para vos</h2>
+    <p class="section-sub">Cada servicio está pensado para un momento específico de tu negocio digital.</p>
+    <div class="services-grid">
+      <div class="svc-card">
+        <p class="svc-label">Conversión</p>
+        <p class="svc-title">Página de ventas</p>
+        <p class="svc-body">Landing completa con estructura probada: gancho, problema, promesa, prueba social, objeciones y CTA. Incluye versión en español o inglés.</p>
+        <p class="svc-price">Desde U$S 150</p>
+      </div>
+      <div class="svc-card featured">
+        <span class="popular-badge">MÁS SOLICITADO</span>
+        <p class="svc-title">Secuencia de emails</p>
+        <p class="svc-body">5–7 emails de bienvenida o lanzamiento que educan, generan confianza y convierten antes de que ofrezcas nada.</p>
+        <p class="svc-price">Desde U$S 120</p>
+      </div>
+      <div class="svc-card">
+        <p class="svc-label">Tráfico pago</p>
+        <p class="svc-title">Copy para ads</p>
+        <p class="svc-body">5 variantes de texto para Facebook e Instagram Ads. Headlines, cuerpo y CTA testeables desde el primer día.</p>
+        <p class="svc-price">Desde U$S 60</p>
+      </div>
+      <div class="svc-card">
+        <p class="svc-label">Recurrente</p>
+        <p class="svc-title">Pack mensual</p>
+        <p class="svc-body">Emails semanales + copy para redes + textos varios. Precio fijo, sin sorpresas. Ideal para creadores con contenido constante.</p>
+        <p class="svc-price">Desde U$S 350/mes</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="proceso">
+  <div class="section-inner">
+    <p class="section-eyebrow">Cómo trabajo</p>
+    <h2 class="section-title">Simple, rápido y sin vueltas</h2>
+    <p class="section-sub">De brief a entrega en menos de 72 horas. Sin idas y vueltas innecesarias.</p>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num-big">1</div>
+        <div class="step-content">
+          <p class="step-title">Me contás tu negocio</p>
+          <p class="step-body">Completás un brief de 10 minutos con información sobre tu curso, tu cliente ideal, tu voz de marca y el objetivo del copy. Cuanto más detallado, mejor el resultado.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num-big">2</div>
+        <div class="step-content">
+          <p class="step-title">Entrego el primer borrador</p>
+          <p class="step-body">En 48–72 horas tenés el copy completo para revisar. Siempre antes del deadline acordado. Si pactamos un plazo, lo cumplimos.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num-big">3</div>
+        <div class="step-content">
+          <p class="step-title">Afinamos juntos</p>
+          <p class="step-body">Dos rondas de revisiones incluidas en el precio. Si algo no te convence — tono, estructura, un párrafo — lo ajustamos sin costo adicional ni drama.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num-big">4</div>
+        <div class="step-content">
+          <p class="step-title">Listo para publicar</p>
+          <p class="step-body">Recibís el copy formateado y ordenado, listo para pegar en tu plataforma, pasárselo a tu diseñador o publicarlo directamente.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="section-inner">
+    <p class="section-eyebrow">Testimonios</p>
+    <h2 class="section-title">Lo que dicen mis clientes</h2>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+        <p class="testi-quote">"La página de ventas que escribió convirtió al doble que la anterior desde el primer día. Valió absolutamente cada peso."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">MA</div>
+          <div><p class="testi-name">María A.</p><p class="testi-role">Coach de finanzas personales</p></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+        <p class="testi-quote">"Entregó en 48 hs y el copy en inglés sonó completamente nativo. Exactamente lo que necesitaba para mi lanzamiento en EE.UU."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">CR</div>
+          <div><p class="testi-name">Carlos R.</p><p class="testi-role">Creador de curso online</p></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+        <p class="testi-quote">"La secuencia de emails generó ventas antes de que terminara el lanzamiento. Pensé que era suerte — lo repetimos y pasó lo mismo."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">SP</div>
+          <div><p class="testi-name">Sofía P.</p><p class="testi-role">Mentora de negocios digitales</p></div>
+        </div>
+      </div>
+    </div>
+    <p 
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="section-inner">
+    <p class="section-eyebrow">Preguntas frecuentes</p>
+    <h2 class="section-title">Lo que siempre preguntan</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Necesito darte mucha información para empezar?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">No. Uso un brief de 10 minutos que te guía paso a paso. Si tenés dudas, hacemos una llamada corta sin costo para que yo entienda bien tu negocio antes de escribir una sola línea.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Cómo sé que el copy va a funcionar para mi nicho?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Me especializo exclusivamente en coaches y creadores de cursos online. Conozco las objeciones típicas de ese mercado, el lenguaje que resuena y las estructuras que convierten en ese contexto específico — tanto en español como en inglés.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Usás IA para escribir? ¿Cómo me aseguro de que no suene genérico?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Sí, uso IA como herramienta de velocidad — igual que un diseñador usa Canva. Lo que diferencia el resultado es el briefing profundo, la edición manual y el criterio sobre qué funciona en ventas reales. El resultado final siempre pasa por mis manos antes de llegar a vos.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Cuánto tiempo tarda la entrega?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">48–72 horas hábiles desde que recibo el brief completo. Para proyectos urgentes puedo ofrecer entrega en 24 hs con un pequeño recargo. Si hay demora de mi parte por cualquier razón, te lo comunico con tiempo.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Qué pasa si no me gusta el resultado?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Incluyo dos rondas de revisiones sin costo adicional. En más de 95% de los casos queda resuelto en la primera. Si después de las dos rondas no estás satisfecho, hablamos — no me interesa cobrar por algo que no te sirva.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final" id="contacto">
+  <div class="section-inner">
+    <p class="section-eyebrow">Empecemos</p>
+    <h2 class="section-title">¿Querés ver cómo mejoraría tu copy?</h2>
+    <p class="section-sub">Mandame tu página o tus emails actuales y te doy feedback concreto y gratuito en 24 horas — sin compromiso ni discurso de ventas.</p>
+    <div class="cta-form">
+      
+      <a href="https://tally.so/r/Zj19la" class="btn-light">Quiero el feedback gratis</a>
+    </div>
+    <p class="cta-guarantee">Sin spam · Solo una respuesta concreta sobre tu copy · Podés responder directamente al email</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">Juan Reale · Copywriter</span>
+  <span class="footer-note">Especializado en coaches y cursos online · ES / EN · © 2025</span>
+</footer>
+
+<script>
+function toggleFaq(btn) {
+  const item = btn.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+</script>
+
+</body>
+</html>
